@@ -53,6 +53,10 @@ public class TowerTargeting : MonoBehaviour
             break;
         case 2: // close
             goto case 0;
+            case 3: //strong
+            goto case 1;
+                case 4: //weak
+            goto case 0; 
     }
 
     JobHandle dependency = new JobHandle();
@@ -136,6 +140,22 @@ public class TowerTargeting : MonoBehaviour
                         _EnemyToIndex[0] = index;
                         CompareValue = DistanceToEnemy;
                     }
+                    break;
+                case 3: //strong
+                    if (_EnemiesToCalculate[index].Health > CompareValue)
+                    {
+                        _EnemyToIndex[0] = index;
+                        CompareValue = _EnemiesToCalculate[index].Health;
+                    }
+
+                    break;
+                case 4: //weak
+                    if (_EnemiesToCalculate[index].Health > CompareValue)
+                    {
+                        _EnemyToIndex[0] = index;
+                        CompareValue = _EnemiesToCalculate[index].Health;
+                    }
+
                     break;
             }
         }

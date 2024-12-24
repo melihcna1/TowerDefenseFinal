@@ -9,6 +9,8 @@ public class TowerPlacement : MonoBehaviour
     [SerializeField] private LayerMask PlacementCollideMask;
     [SerializeField] private Camera PlayerCamera;
     private GameObject CurrentPlacingTower;
+
+    [SerializeField] private PlayerStats PlayerStatistics;
     // Start is called before the first frame update
     void Start()
     {
@@ -47,8 +49,11 @@ public class TowerPlacement : MonoBehaviour
                     if (!Physics.CheckBox(BoxCenter, HalfExtents, Quaternion.identity, PlacementCheckMask,
                             QueryTriggerInteraction.Ignore))
                     {
-                        GameLoopManager.TowersInGame.Add(CurrentPlacingTower.GetComponent<TowerBehaviour>());
+                        TowerBehaviour CurrentTowerBehaviour = CurrentPlacingTower.GetComponent<TowerBehaviour>();
+                        GameLoopManager.TowersInGame.Add(CurrentTowerBehaviour);
                         
+                        PlayerStatistics.AddMoney(-CurrentPlacingTower.GetComponent<TowerBehaviour>().SummonCost);
+
                         TowerCollider.isTrigger = false;
                         CurrentPlacingTower = null;
                     }
@@ -60,7 +65,16 @@ public class TowerPlacement : MonoBehaviour
 
     public void SetTowerToPlace(GameObject tower)
     {
-        CurrentPlacingTower= Instantiate(tower, Vector3.zero, Quaternion.identity);
+        int TowerSummonCost = tower.GetComponent<TowerBehaviour>().SummonCost;
+
+        if (PlayerStatistics.GetMoney() >= TowerSummonCost)
+        {
+            CurrentPlacingTower= Instantiate(tower, Vector3.zero, Quaternion.identity);
+        }
+        else
+        {
+            Debug.Log("You need more money to purchase a"+ tower.name);
+        }
     }
     
 }

@@ -53,10 +53,11 @@ MonoBehaviour:
   EnemiesLayer:
     serializedVersion: 2
     m_Bits: 64
-  Damage: 1
+  Damage: 3
   Firerate: 5
   Range: 5
   Delay: 0
+  SummonCost: 100
 --- !u!65 &1088760330071015897
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -54,10 +54,11 @@ MonoBehaviour:
   EnemiesLayer:
     serializedVersion: 2
     m_Bits: 64
-  Damage: 0.2
+  Damage: 1
   Firerate: 25
   Range: 5
   Delay: 0
+  SummonCost: 600
 --- !u!65 &7116654643206962579
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -118,7 +119,7 @@ Transform:
   m_GameObject: {fileID: 188734246744922843}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.0583029, y: 0.7199999, z: 0.73884094}
+  m_LocalPosition: {x: -0.0066, y: 0.7199999, z: 0.396}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -443,7 +444,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 831b946ecae90254f85f8befcadf0235, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: -7805965318761107941, guid: 15a41b37aa8938148a1bbb6d8ea98540, type: 3}
+      objectReference: {fileID: -2086519413919730263, guid: 15a41b37aa8938148a1bbb6d8ea98540, type: 3}
     - target: {fileID: -5754084199372789682, guid: 831b946ecae90254f85f8befcadf0235, type: 3}
       propertyPath: m_Mesh
       value: 

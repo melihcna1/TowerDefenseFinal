@@ -12,6 +12,7 @@ public class TowerBehaviour : MonoBehaviour
     public float Firerate;
     public float Range;
     public float Delay;
+    public int SummonCost = 100;
 
     private IDamageMethod CurrentDamageMethodClass;
     void Start()
